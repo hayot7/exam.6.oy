@@ -4,7 +4,14 @@ import { auth } from "../middleware/auth.middleware";
 
 const router = Router();
 
-router.get("/get_products", getProducts);
-router.post("/add_product", auth, addProduct);
+router.get("/", getProducts);
+router.post("/", auth, addProduct);
 
 export default router;
+
+import { getProductsSafe, addProductValidated } from "../controller/product.ctr";
+import { authEnhanced } from "../middleware/auth.middleware";
+
+router.get("/safe", getProductsSafe);
+
+router.post("/create-enhanced", authEnhanced, addProductValidated);

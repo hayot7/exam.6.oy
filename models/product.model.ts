@@ -9,3 +9,15 @@ const productSchema = new mongoose.Schema({
 });
 
 export const Product = mongoose.model("Product", productSchema);
+
+import { Document } from "mongoose";
+
+export interface IProduct extends Document {
+  title: string;
+  price: number;
+  category: string;
+  description?: string;
+  image?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
